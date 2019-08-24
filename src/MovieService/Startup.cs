@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MovieService.DomainLayer;
 using MovieService.Middleware;
 
 [assembly: InternalsVisibleTo("AcceptanceTests")]
@@ -26,7 +27,8 @@ namespace MovieService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddSingleton<DomainFacade>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

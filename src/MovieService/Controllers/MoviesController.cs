@@ -16,6 +16,13 @@ namespace MovieService.Controllers
     [ApiController]
     public class MoviesController : ControllerBase
     {
+        private readonly DomainFacade _domainFacade;
+
+        public MoviesController(DomainFacade domainFacade)
+        {
+            _domainFacade = domainFacade;
+        }
+
         /// <summary>
         /// This action returns an ActionResult&lt;T&gt; instead of an IEnumerable&lt;MovieResource&gt;
         /// That is because we're handling Exceptions in this action as well and in order to be
@@ -70,21 +77,17 @@ namespace MovieService.Controllers
 
         protected virtual async Task<IEnumerable<Movie>> GetAllMovies()
         {
-            var domainFacade = new DomainFacade();
-            return await domainFacade.GetAllMovies().ConfigureAwait(false);
+            return await _domainFacade.GetAllMovies().ConfigureAwait(false);
         }
 
         protected virtual async Task<IEnumerable<Movie>> GetMoviesByGenre(Genre genre)
         {
-            var domainFacade = new DomainFacade();
-            return await domainFacade.GetMoviesByGenre(genre).ConfigureAwait(false);
+            return await _domainFacade.GetMoviesByGenre(genre).ConfigureAwait(false);
         }
 
         protected virtual async Task<IEnumerable<Movie>> GetMoviesByYear(int year)
         {
-            var domainFacade = new DomainFacade();
-            return await domainFacade.GetMoviesByYear(year).ConfigureAwait(false);
+            return await _domainFacade.GetMoviesByYear(year).ConfigureAwait(false);
         }
-
     }
 }

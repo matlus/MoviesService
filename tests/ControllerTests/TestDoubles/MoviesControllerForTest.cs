@@ -14,11 +14,13 @@ namespace ControllerTests.TestDoubles
         private readonly IEnumerable<Movie> _movies;
 
         public MoviesControllerForTest(IEnumerable<Movie> movies)
+            :base(domainFacade: null)
         {
             _movies = movies;
         }
 
         public MoviesControllerForTest(Exception exception)
+            :base(domainFacade: null)
         {
             _exception = exception;
         }
