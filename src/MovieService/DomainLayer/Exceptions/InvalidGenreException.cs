@@ -8,6 +8,7 @@ namespace MovieService.DomainLayer.Exceptions
     [ExcludeFromCodeCoverage]
     public sealed class InvalidGenreException : MovieServiceBusinessBaseException
     {
+        public override string Reason => "Invalid Genre";
         public InvalidGenreException() { }
         public InvalidGenreException(string message) : base(message) { }
         public InvalidGenreException(string message, Exception inner) : base(message, inner) { }

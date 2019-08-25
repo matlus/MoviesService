@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using MovieService.DomainLayer.Exceptions;
-using MovieService.ExceptionToReasonPhraseMappers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +15,9 @@ namespace MovieService.Middleware.HttpTranslators
         {
             httpResponse.Headers.Add("Exception-Type", exception.GetType().Name);
 
-            if (exception is MovieServiceBaseException)
+            if (exception is MovieServiceBaseException e)
             {
-                httpResponse.HttpContext.Features.Get<IHttpResponseFeature>().ReasonPhrase = ExceptionToReasonPhraseMapper.GetReasonPhrase(exception);
+                httpResponse.HttpContext.Features.Get<IHttpResponseFeature>().ReasonPhrase = e.Reason;
             }
 
             if (exception is MovieServiceBusinessBaseException)

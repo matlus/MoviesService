@@ -10,6 +10,7 @@ namespace MovieService.DomainLayer.Managers.Services.MovieService.Exceptions
     [ExcludeFromCodeCoverage]
     public sealed class ImdbNotFoundException : MovieServiceTechnicalBaseException
     {
+        public override string Reason => "Imdb Service - Not Nound";
         public ImdbNotFoundException() { }
         public ImdbNotFoundException(string message) : base(message) { }
         public ImdbNotFoundException(string message, Exception inner) : base(message, inner) { }

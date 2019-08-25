@@ -6,8 +6,9 @@ namespace MovieService.DomainLayer.Exceptions
 
     [Serializable]
     [ExcludeFromCodeCoverage]
-    public sealed class ConfigurationSettingKeyNotFoundException : Exception
+    public sealed class ConfigurationSettingKeyNotFoundException : MovieServiceTechnicalBaseException
     {
+        public override string Reason => "Configuration Setting Key Not Found";
         public ConfigurationSettingKeyNotFoundException() { }
         public ConfigurationSettingKeyNotFoundException(string message) : base(message) { }
         public ConfigurationSettingKeyNotFoundException(string message, Exception inner) : base(message, inner) { }

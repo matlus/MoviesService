@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using MovieService.DomainLayer.Exceptions;
-using MovieService.ExceptionToReasonPhraseMappers;
 using MovieService.Middleware.HttpTranslators;
 using System;
 using System.Net;

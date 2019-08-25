@@ -8,6 +8,7 @@ namespace MovieService.DomainLayer.Exceptions
     [ExcludeFromCodeCoverage]
     public sealed class NoMoviesFoundForGivenYearException : MovieServiceBusinessBaseException
     {
+        public override string Reason => "No Movies Found For Given Year";
         public NoMoviesFoundForGivenYearException() { }
         public NoMoviesFoundForGivenYearException(string message) : base(message) { }
         public NoMoviesFoundForGivenYearException(string message, Exception inner) : base(message, inner) { }

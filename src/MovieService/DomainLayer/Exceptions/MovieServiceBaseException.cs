@@ -6,11 +6,12 @@ namespace MovieService.DomainLayer.Exceptions
 
     [Serializable]
     [ExcludeFromCodeCoverage]
-    public class MovieServiceBaseException : Exception
+    public abstract class MovieServiceBaseException : Exception
     {
-        public MovieServiceBaseException() { }
-        public MovieServiceBaseException(string message) : base(message) { }
-        public MovieServiceBaseException(string message, Exception inner) : base(message, inner) { }
+        public abstract string Reason { get; }
+        protected MovieServiceBaseException() { }
+        protected MovieServiceBaseException(string message) : base(message) { }
+        protected MovieServiceBaseException(string message, Exception inner) : base(message, inner) { }
         protected MovieServiceBaseException(
           System.Runtime.Serialization.SerializationInfo info,
           System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
