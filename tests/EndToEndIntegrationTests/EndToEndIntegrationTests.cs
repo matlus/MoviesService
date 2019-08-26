@@ -11,12 +11,12 @@ using System.Threading.Tasks;
 namespace EndToEndIntegrationTests
 {
     [TestClass]
-    public class UnitTest1
+    public class EndToEndIntegrationTests
     {
         private readonly WebApplicationFactory<MovieService.Startup> _webApplicationFactory;
         private readonly HttpClient _httpClient;
 
-        public UnitTest1()
+        public EndToEndIntegrationTests()
         {
             _webApplicationFactory = new WebApplicationFactory<MovieService.Startup>();
             _httpClient = _webApplicationFactory.CreateClient();            
