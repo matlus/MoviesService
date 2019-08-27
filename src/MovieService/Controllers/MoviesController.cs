@@ -7,7 +7,6 @@ using MovieService.DomainLayer.Managers.Parsers;
 using MovieService.ResourceModels;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 
 namespace MovieService.Controllers

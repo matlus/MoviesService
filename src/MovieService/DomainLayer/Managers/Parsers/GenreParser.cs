@@ -1,14 +1,13 @@
 ﻿using MovieService.DomainLayer.Exceptions;
 using MovieService.DomainLayer.Managers.Enums;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 
 namespace MovieService.DomainLayer.Managers.Parsers
 {
     internal static class GenreParser
     {
-        private static FieldInfo[] s_genreFieldInfos = typeof(Genre).GetFields(BindingFlags.GetField | BindingFlags.Public | BindingFlags.Static);
+        private static FieldInfo[] s_genreFieldInfos = typeof(Genre).GetFields(BindingFlags.Public | BindingFlags.Static);
         private static Dictionary<string, Genre> stringToGenreMappings = new Dictionary<string, Genre>();
         private static Dictionary<Genre, string> genreToStringMappings = new Dictionary<Genre, string>();
 
@@ -20,21 +19,24 @@ namespace MovieService.DomainLayer.Managers.Parsers
 
                 var enumDescriptionAttributes = (EnumDescriptionAttribute[])fieldInfo.GetCustomAttributes(typeof(EnumDescriptionAttribute));
 
-                if (!enumDescriptionAttributes.Any())
+                if (enumDescriptionAttributes.Length == 0)
                 {                    
-                    stringToGenreMappings.Add(fieldInfo.Name.ToUpper(), genre);
+                    stringToGenreMappings.Add(fieldInfo.Name.ToLower(), genre);
                     genreToStringMappings.Add(genre, fieldInfo.Name);
                 }
                 else
                 {
+                    var count = 0;
                     foreach (var enumDescAttribute in enumDescriptionAttributes)
                     {
-                        stringToGenreMappings.Add(enumDescAttribute.Description.ToUpper(), genre);
+                        stringToGenreMappings.Add(enumDescAttribute.Description.ToLower(), genre);
 
-                        if (!genreToStringMappings.ContainsKey(genre))
+                        if (count == 0)
                         {
                             genreToStringMappings.Add(genre, enumDescAttribute.Description);
                         }
+
+                        count++;
                     }
                 }
             }
@@ -47,7 +49,7 @@ namespace MovieService.DomainLayer.Managers.Parsers
                 throw new InvalidGenreException($"A null or Empty genre is not valid. Valid values are: {string.Join(", ", GetGenreValues())}");
             }
 
-            var genre = genreAsString.ToUpper();
+            var genre = genreAsString.ToLower();
             if (stringToGenreMappings.ContainsKey(genre))
             {
                 return stringToGenreMappings[genre];

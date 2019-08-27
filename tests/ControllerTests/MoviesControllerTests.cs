@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MovieService.Controllers;
 using MovieService.CustomActionResults;
 using MovieService.DomainLayer.Exceptions;
 using MovieService.DomainLayer.Managers.Models;
@@ -13,7 +12,6 @@ using TestingCommon.AssertHelpers;
 using MovieService.DomainLayer.Managers.Enums;
 using ControllerTests.TestDoubles;
 using Microsoft.AspNetCore.Http;
-using System.IO;
 
 namespace ControllerTests
 {

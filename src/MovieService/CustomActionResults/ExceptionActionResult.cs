@@ -1,10 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Features;
-using Microsoft.AspNetCore.Mvc;
-using MovieService.DomainLayer.Exceptions;
+﻿using Microsoft.AspNetCore.Mvc;
 using MovieService.Middleware.HttpTranslators;
 using System;
-using System.Net;
 using System.Threading.Tasks;
 
 namespace MovieService.CustomActionResults

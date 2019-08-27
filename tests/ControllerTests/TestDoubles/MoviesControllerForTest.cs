@@ -3,7 +3,6 @@ using MovieService.DomainLayer.Managers.Enums;
 using MovieService.DomainLayer.Managers.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ControllerTests.TestDoubles
