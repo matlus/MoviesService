@@ -26,17 +26,11 @@ namespace MovieService.DomainLayer.Managers.Parsers
                 }
                 else
                 {
-                    var count = 0;
+                    genreToStringMappings.Add(genre, enumDescriptionAttributes[0].Description);
+
                     foreach (var enumDescAttribute in enumDescriptionAttributes)
                     {
                         stringToGenreMappings.Add(enumDescAttribute.Description.ToLower(), genre);
-
-                        if (count == 0)
-                        {
-                            genreToStringMappings.Add(genre, enumDescAttribute.Description);
-                        }
-
-                        count++;
                     }
                 }
             }
